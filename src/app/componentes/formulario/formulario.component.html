@@ -1,0 +1,34 @@
+<form>
+  <table>
+    <tr>
+      <td>nombre</td>
+      <td>apellido</td>
+      <td>dni</td>
+      <td></td>
+    </tr>
+    <tr *ngFor="let item of nombres">
+      <td>
+        <label *ngIf="modificar!=item.id">{{item.nombre}}</label>
+        <input *ngIf="modificar==item.id" type="text" name="nombre{{item.dni}}" [(ngModel)]="item.nombre" >
+       </td>
+      <td>
+        <label *ngIf="modificar!=item.id">{{item.apellido}}</label>
+          <input *ngIf="modificar==item.id" type="text" name="apellido{{item.dni}}" [(ngModel)]="item.apellido">     
+      </td>
+      <td>
+        <label *ngIf="modificar!=item.id">{{item.dni}}</label>
+            <input *ngIf="modificar==item.id"      type="text" name="dni{{item.dni}}" [(ngModel)]="item.dni">
+      </td>   
+      <td>
+        <input *ngIf="modificar!=item.id" type="button" value="modificar" (click)="modifica(item.id)">
+        <input *ngIf="modificar==item.id" type="button" value="guardar" (click)="noModifica()">
+       </td>
+    </tr>
+  </table>  
+  <router-outlet></router-outlet>
+  <select>
+    <option *ngFor="let items of nombres" value="items.dni">{{items.nombre}} -{{items.apellido}} </option>
+  </select>
+<input  type="button" (click)="consola()" >
+
+</form>

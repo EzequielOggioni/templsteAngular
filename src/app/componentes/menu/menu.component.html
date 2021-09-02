@@ -1,0 +1,23 @@
+<nav><ul>
+    <li *ngIf="!esAdmin">
+        <a href="/">login</a>
+    </li>
+    <li *ngIf="esAdmin">
+        <a href="/formulario">formulario</a>
+    </li>
+    <li *ngIf="!esAdmin">
+        <a routerLink="/">login</a>
+    </li>
+    <li *ngIf="esAdmin">
+        <a routerLink="/formulario">formulario</a>
+    </li>
+    <li *ngIf="esAdmin">
+        <a routerLink="/form">form</a>
+    </li>
+    <li *ngIf="esAdmin">
+        <a routerLink="/ejercicio">ejercicio</a>
+    </li>
+    <li  *ngIf="esAdmin">
+        <input type="button" (click)="salir()" value="salir">
+    </li>
+</ul> </nav>
