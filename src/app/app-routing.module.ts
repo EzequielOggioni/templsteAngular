@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EjercicioComponent } from './componentes/ejercicio/ejercicio.component';
-import { FormularioComponent } from './componentes/formulario/formulario.component';
+import { GeneralComponent } from './componentes/general/general.component';
 import { LoginComponent } from './componentes/login/login.component';
-import { NoEncontradoComponent } from './componentes/no-encontrado/no-encontrado.component';
-import { ValidadorGuard } from './helpers/validador.guard';
+import { NoEncontradaComponent } from './componentes/no-encontrada/no-encontrada.component';
+import { PrimerComponenteComponent } from './componentes/primer-componente/primer-componente.component';
+import { SegundoComponenteComponent } from './componentes/segundo-componente/segundo-componente.component';
+import { CustodiaGuard } from './helpers/custodia.guard';
 
-const routes: Routes = [
-{path:'formulario', component: FormularioComponent, canActivate: [ValidadorGuard],
-  children: [{path:"ejercicio", component:EjercicioComponent}   ]
-},
-{path:'form', redirectTo:"/formulario/ejercicio" },
-{path:'ejercicio', component: EjercicioComponent, canActivate: [ValidadorGuard]},
-{path:'', component: LoginComponent},
-{path:'**', component:NoEncontradoComponent}
- ];
+const routes: Routes =  [{
+    path: 'primer', component: PrimerComponenteComponent, canActivate: [CustodiaGuard],
+    children: [{ path: 'segundo', component: SegundoComponenteComponent }]
+  },
+  { path: 'primer/:numero', component: PrimerComponenteComponent, canActivate: [CustodiaGuard]},
+  { path: 'segundo', component: SegundoComponenteComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', component: NoEncontradaComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

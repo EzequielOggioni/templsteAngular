@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,20 +7,23 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-usuario:string;
-  constructor(private ruteo:Router) { 
-    this.usuario='';
-    if(localStorage.getItem("usuario") == "admin"){
-      this.ruteo.navigate(["/formulario"]);
+  usuario:string;
+  constructor(private router:Router) {
+    this.usuario = '';
+    if(localStorage.getItem("usuario") == "admin")
+      this.router.navigate(["/primer",45]);
+      
     }
-  }
+   
 
   ngOnInit(): void {
   }
-
   entrar(){
+    
     localStorage.setItem("usuario",this.usuario);
-    this.ruteo.navigate(["/formulario"]);
+    if(this.usuario == 'admin')
+      this.router.navigate(["/primer"]);
+
   }
 
 }

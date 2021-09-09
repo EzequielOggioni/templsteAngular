@@ -7,17 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  esAdmin;
-
+  logueado:boolean;
   constructor() { 
-    this.esAdmin = localStorage.getItem("usuario") == "admin";
+    this.logueado = localStorage.getItem("usuario") == "admin";
+
   }
 
   ngOnInit(): void {
   }
-
   salir(){
-    localStorage.removeItem("usuario");
+    localStorage.removeItem('usuario');
   }
-
 }

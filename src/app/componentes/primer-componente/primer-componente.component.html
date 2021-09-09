@@ -1,0 +1,23 @@
+<form>
+    <h1>{{numero}}</h1>
+    <div *ngFor="let persona of listaDePersonas">
+        <div class="row" *ngIf="persona.apellido!=persona.nombre">
+            <label>nombre{{persona.nombre}}</label>
+            <input #nombre3 type="text" [(ngModel)]="persona.nombre" name="nombre{{persona.dni}}">
+        </div>
+        <div class="row">
+            <label>apellido</label>
+            <input type="text" [(ngModel)]="persona.apellido" name="apellido{{persona.dni}}">
+        </div>
+        <div class="row">
+            <label>dni</label>
+            <input [class]="persona.nombre" [type]="tipoControl" [(ngModel)]="persona.dni" name="dni{{persona.dni}}">
+        </div>
+        <input type="button" (click)="mostrar()" value="presione aqui">
+    </div>
+    <router-outlet></router-outlet>
+    <select>
+        <option *ngFor="let item of listaDePersonas" value="item.dni">{{item.nombre}} - {{item.apellido}}</option>
+    </select>
+
+</form>
